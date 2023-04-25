@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>APP Presupuesto</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/CSS/styles.css">
+    <link rel="shortcut icon" href="assets/IMG/icon.png" type="image/x-icon">
+    <script src="https://kit.fontawesome.com/e4c1bcc4db.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand mx-4" href="#">APP PRESUPUESTO</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <img class="mt-[20px]" src="assets/IMG/menu.png" alt="x" />
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Indicadores económicos</a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+
+    <main>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-4 col-12 h-100  order-1 order-md-1">
+                    <!-- presupuesto -->
+                    <div class="container w-75 py-3  border border-success bgGreen rounded my-5">
+                        <form>
+                            <label class="form-label text-success"><strong>Ingresa tu presupuesto</strong></label>
+                            <input type="text" id="budget" class="form-control mb-4" placeholder="Ej: 800000">
+                            <button onclick="addBudget()" type="button" class="btn btn-success">Ingresar</button>
+                        </form>
+                    </div>
+
+                    <!--  gastos -->
+                    <div class="container w-75 py-3 border border-primary bgBlue rounded mb-5">
+                        <form>
+                            <label class="form-label text-primary"><strong>Ingresa el nombre del gasto</strong></label>
+                            <input type="text" id="idSpent" class="form-control mb-4"
+                                placeholder="Ej: Alimento para mascotas">
+                            <label class="form-label  text-primary"><strong>Ingresa la cantidad del
+                                    gasto</strong></label>
+                            <input type="text" id="spent" class="form-control mb-4" placeholder="Ej: 14000">
+                            <button onclick="addSpent()" type="button" class="btn btn-primary">Añadir gasto</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-8 col-12 h-100 order-2 order-md-2">
+
+
+                    <div class="row">
+                        <div class="container col-3  my-5 bgRed  border border-danger rounded">
+                            <div class="text-center">
+                                <div class="card-header text-danger"><strong>PRESUPUESTO</strong></div>
+                                <p class="amountBudget mt-4"><strong>$ 8000000</strong></p>
+                            </div>
+                        </div>
+                        <div class="container col-3  my-5 bgRed  border border-danger rounded">
+                            <div class="text-center">
+                                <div class="card-header text-danger"><strong>GASTOS</strong></div>
+                                <p class=" mt-4"><strong>$ 8000000</strong></p>
+                            </div>
+                        </div>
+                        <div class="container col-3  my-5 bgRed  border border-danger rounded">
+                            <div class="text-center">
+                                <div class="card-header text-danger"><strong>SALDO</strong></div>
+                                <p class=" mt-4"><strong>$ 8000000</strong></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-10">
+                            <table class="m-4 table border border-danger bgRed rounded">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th class="col-1" scope="col">#</th>
+                                        <th scope="col">Gasto</th>
+                                        <th class="col-2" scope="col">Valor</th>
+                                        <th class="text-center col-1" scope="col">Editar</th>
+                                        <th class="text-center col-1" scope="col">Remover</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th scope="row">1</th>
+                                        <td>comida</td>
+                                        <td>26486262</td>
+                                        <td class="text-center">
+                                            <i class="fas fa-edit"></i>
+                                        </td>
+                                        <td class="text-center">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-dark w-100 p-3 fixed-bottom justify-content-center">
+        <p class="terms text-center text-danger">Todos los derechos reservados <i
+                class="fa-solid fa-registered text-light"></i></p>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.min.js"
+        integrity="sha512-3bE0D+3kMEI6N+XpXv7KjvnW8np/2HwzzkN+gKdJlW8s4U6+a4X6Dvwt1NXxzEJZ/XcCkSg1TrvU6dFJrt/cUQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/JS/app.js"></script>
+</body>
+
+</html>

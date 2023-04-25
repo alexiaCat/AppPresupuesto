@@ -1,0 +1,21 @@
+ /* Oculta el nav en la parte izquierda */
+ .nav {
+    transform: translateX(100vw);
+  }
+
+  /* Muestra el nav */
+  .nav--show {
+     transform: translateX(0); 
+  }
+
+.bgBlue {
+   background-color: #9FB9FF;
+}
+
+.bgGreen {
+   background-color: #A7EF9E;
+}
+
+.bgRed {
+   background-color: #FFBABA;
+}
