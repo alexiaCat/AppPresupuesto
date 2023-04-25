@@ -19,3 +19,8 @@
 .bgRed {
    background-color: #FFBABA;
 }
+
+#expenseList td {
+   border: 1px solid black;
+   padding: 5px;
+}

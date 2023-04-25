@@ -38,7 +38,7 @@
                     <div class="container w-75 py-3  border border-success bgGreen rounded my-5">
                         <form>
                             <label class="form-label text-success"><strong>Ingresa tu presupuesto</strong></label>
-                            <input type="text" id="budget" class="form-control mb-4" placeholder="Ej: 800000">
+                            <input id="budget" type="number" class="form-control mb-4" placeholder="Ej: 800000">
                             <button onclick="addBudget()" type="button" class="btn btn-success">Ingresar</button>
                         </form>
                     </div>
@@ -51,7 +51,7 @@
                                 placeholder="Ej: Alimento para mascotas">
                             <label class="form-label  text-primary"><strong>Ingresa la cantidad del
                                     gasto</strong></label>
-                            <input type="text" id="spent" class="form-control mb-4" placeholder="Ej: 14000">
+                            <input id="spent" type="number" class="form-control mb-4" placeholder="Ej: 14000">
                             <button onclick="addSpent()" type="button" class="btn btn-primary">Añadir gasto</button>
                         </form>
                     </div>
@@ -60,40 +60,40 @@
 
 
                     <div class="row">
-                        <div class="container col-3  my-5 bgRed  border border-danger rounded">
+                        <div class="container col-2  my-5 bgRed  border border-danger rounded">
                             <div class="text-center">
                                 <div class="card-header text-danger"><strong>PRESUPUESTO</strong></div>
-                                <p class="amountBudget mt-4"><strong>$ 8000000</strong></p>
+                                <p class="mt-4 bg-light"><strong id="amountBudget"></strong></p>
                             </div>
                         </div>
-                        <div class="container col-3  my-5 bgRed  border border-danger rounded">
+                        <div class="container col-2  my-5 bgRed  border border-danger rounded">
                             <div class="text-center">
                                 <div class="card-header text-danger"><strong>GASTOS</strong></div>
-                                <p class=" mt-4"><strong>$ 8000000</strong></p>
+                                <p class="mt-4 bg-light"><strong id="amountSpends"></strong></p>
                             </div>
                         </div>
-                        <div class="container col-3  my-5 bgRed  border border-danger rounded">
+                        <div class="container col-2  my-5 bgRed  border border-danger rounded">
                             <div class="text-center">
                                 <div class="card-header text-danger"><strong>SALDO</strong></div>
-                                <p class=" mt-4"><strong>$ 8000000</strong></p>
+                                <p class="mt-4 bg-light"><strong id="amountBalance"></strong></p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="row">
+                    <div class="row justify-content-center">
                         <div class="col-10">
-                            <table class="m-4 table border border-danger bgRed rounded">
+                            <table class="table border border-danger bgRed rounded">
                                 <thead class="thead-dark">
                                     <tr>
-                                        <th class="col-1" scope="col">#</th>
+                                        <th class="col-1" scope="col">ID</th>
                                         <th scope="col">Gasto</th>
                                         <th class="col-2" scope="col">Valor</th>
                                         <th class="text-center col-1" scope="col">Editar</th>
                                         <th class="text-center col-1" scope="col">Remover</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
+                                <tbody id="expenseList">
+                                    <!-- <tr>
                                         <th scope="row">1</th>
                                         <td>comida</td>
                                         <td>26486262</td>
@@ -103,7 +103,7 @@
                                         <td class="text-center">
                                             <i class="fas fa-trash-alt"></i>
                                         </td>
-                                    </tr>
+                                    </tr> -->
                                 </tbody>
                             </table>
                         </div>
