@@ -2,108 +2,88 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APP Presupuesto</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/CSS/styles.css">
     <link rel="shortcut icon" href="assets/IMG/icon.png" type="image/x-icon">
     <script src="https://kit.fontawesome.com/e4c1bcc4db.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
         <a class="navbar-brand mx-4" href="#">APP PRESUPUESTO</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <img class="mt-[20px]" src="assets/IMG/menu.png" alt="x" />
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Indicadores económicos</a>
-                </li>
-
-            </ul>
-        </div>
     </nav>
 
-
-    <main>
+    <main class="overflow-auto">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4 col-12 h-100  order-1 order-md-1">
                     <!-- presupuesto -->
-                    <div class="container w-75 py-3  border border-success bgGreen rounded my-5">
+                    <div class="container wMax w-75  py-3 border border-success bgGreen rounded my-5">
                         <form>
                             <label class="form-label text-success"><strong>Ingresa tu presupuesto</strong></label>
                             <input id="budget" type="number" class="form-control mb-4" placeholder="Ej: 800000">
                             <button onclick="addBudget()" type="button" class="btn btn-success">Ingresar</button>
                         </form>
                     </div>
-
                     <!--  gastos -->
-                    <div class="container w-75 py-3 border border-primary bgBlue rounded mb-5">
+                    <div class="container wMax w-75 py-3 border border-danger bgRed rounded mb-5">
                         <form>
-                            <label class="form-label text-primary"><strong>Ingresa el nombre del gasto</strong></label>
+                            <label class="form-label text-danger"><strong>Ingresa el nombre del gasto</strong></label>
                             <input type="text" id="idSpent" class="form-control mb-4"
                                 placeholder="Ej: Alimento para mascotas">
-                            <label class="form-label  text-primary"><strong>Ingresa la cantidad del
+                            <label class="form-label  text-danger"><strong>Ingresa la cantidad del
                                     gasto</strong></label>
                             <input id="spent" type="number" class="form-control mb-4" placeholder="Ej: 14000">
-                            <button onclick="addSpent()" type="button" class="btn btn-primary">Añadir gasto</button>
+                            <button onclick="addSpent()" type="button" class="btn btn-danger">Añadir gasto</button>
                         </form>
                     </div>
                 </div>
+
                 <div class="col-md-8 col-12 h-100 order-2 order-md-2">
-
-
-                    <div class="row">
-                        <div class="container col-2  my-5 bgRed  border border-danger rounded">
+                    <div class="row column">
+                        <div class="container wMax col-3 marg my-5 bgBlue  border border-primary rounded">
                             <div class="text-center">
-                                <div class="card-header text-danger"><strong>PRESUPUESTO</strong></div>
+                                <div class="card-header text-primary"><strong>PRESUPUESTO</strong></div>
                                 <p class="mt-4 bg-light"><strong id="amountBudget"></strong></p>
                             </div>
                         </div>
-                        <div class="container col-2  my-5 bgRed  border border-danger rounded">
+                        <div class="container wMax col-3 marg my-5 bgBlue  border border-primary rounded">
                             <div class="text-center">
-                                <div class="card-header text-danger"><strong>GASTOS</strong></div>
+                                <div class="card-header text-primary"><strong>GASTOS</strong></div>
                                 <p class="mt-4 bg-light"><strong id="amountSpends"></strong></p>
                             </div>
                         </div>
-                        <div class="container col-2  my-5 bgRed  border border-danger rounded">
+                        <div class="container wMax col-3 marg my-5 bgBlue  border border-primary rounded">
                             <div class="text-center">
-                                <div class="card-header text-danger"><strong>SALDO</strong></div>
+                                <div class="card-header text-primary"><strong>SALDO</strong></div>
                                 <p class="mt-4 bg-light"><strong id="amountBalance"></strong></p>
                             </div>
                         </div>
                     </div>
-
-                    <div class="row justify-content-center">
-                        <div class="col-10">
-                            <table class="table border border-danger bgRed rounded">
-                                <thead class="thead-dark">
+                   
+                    <div class="row justify-content-center align-items-center"> 
+                        <div class="col-11" id="alerts"></div>
+                    </div>
+                
+                    <div class="row justify-content-center mb-5 mb-5">
+                        <div class="col-11 table-responsive">
+                            <table class="table border border-primary bgWhite">
+                                <thead class="thead-dark bgBlue">
                                     <tr>
-                                        <th class="col-1" scope="col">ID</th>
-                                        <th scope="col">Gasto</th>
-                                        <th class="col-2" scope="col">Valor</th>
-                                        <th class="text-center col-1" scope="col">Editar</th>
-                                        <th class="text-center col-1" scope="col">Remover</th>
+                                        <th class="text-primary" scope="col">Gasto</th>
+                                        <th class="col-2 text-primary" scope="col">Valor</th>
+                                        <th class="text-center text-primary col-1" scope="col">Editar</th>
+                                        <th class="text-center text-primary col-1" scope="col">Eliminar</th>
                                     </tr>
                                 </thead>
                                 <tbody id="expenseList">
-                                    <!-- <tr>
-                                        <th scope="row">1</th>
-                                        <td>comida</td>
-                                        <td>26486262</td>
-                                        <td class="text-center">
-                                            <i class="fas fa-edit"></i>
-                                        </td>
-                                        <td class="text-center">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </td>
-                                    </tr> -->
+                                    <!-- <tr> </tr> -->
                                 </tbody>
                             </table>
                         </div>
@@ -113,13 +93,19 @@
             </div>
         </div>
     </main>
-    <footer class="bg-dark w-100 p-3 fixed-bottom justify-content-center">
-        <p class="terms text-center text-danger">Todos los derechos reservados <i
+    <footer class="bg-success w-100 p-3 fixed-bottom footerStatic justify-content-center">
+        <p class="terms text-center text-light">Todos los derechos reservados <i
                 class="fa-solid fa-registered text-light"></i></p>
     </footer>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/js/bootstrap.min.js"
-        integrity="sha512-3bE0D+3kMEI6N+XpXv7KjvnW8np/2HwzzkN+gKdJlW8s4U6+a4X6Dvwt1NXxzEJZ/XcCkSg1TrvU6dFJrt/cUQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+        integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+        integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script src="assets/JS/app.js"></script>
 </body>
 

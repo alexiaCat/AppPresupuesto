@@ -1,29 +1,55 @@
 let bills = [];
 let countId = 0;
+let saldo = 0;
+let gastos = 0;
 const budgetHTML = document.querySelector("#amountBudget");
 const spendsHTML = document.querySelector("#amountSpends");
 const balanceHTML = document.querySelector("#amountBalance");
 
 
+//mostrar alerta
+function showAlert(text) {
+    var alert = `
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>¡Error!</strong> ${text}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        `;
+    var alertsContainer = document.getElementById('alerts');
+    alertsContainer.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
+    alertsContainer.innerHTML = alert;
+}
+
 // Agregar presupuesto
 function addBudget() {
     let budget = document.getElementById("budget").value;
-    updateBalance(budget);
-    updateBudget(budget);
-    document.getElementById("budget").value = "";
+    if (budget.trim() === '') {
+        showAlert("Ingresa tu presupuesto")
+    } else {
+        updateBalance(budget);
+        saldo = budget;
+        updateBudget();
+        document.getElementById("budget").value = "";
+    }
+
 }
 
 // Agregar gastos
 function addSpent() {
     var idSpent = document.getElementById("idSpent").value;
     var spent = document.getElementById("spent").value;
-    generateId();
-    bills.push({ countId, idSpent, spent });
-    updateTable();
-    updateSpends();
-    updateBudget();
-    document.getElementById("idSpent").value = "";
-    document.getElementById("spent").value = "";
+    if (idSpent.trim() === '' || spent.trim() === '') {
+        showAlert("Completa todos los datos de tus gastos")
+    } else {
+        generateId();
+        bills.push({ countId, idSpent, spent });
+        updateTable();
+        updateSpends();
+        updateBudget();
+        document.getElementById("idSpent").value = "";
+        document.getElementById("spent").value = "";
+    }
+
 }
 
 // Generar id
@@ -33,7 +59,7 @@ function generateId() {
 }
 
 //formato peso chileno
-function chileanPesoFormat(coin){
+function chileanPesoFormat(coin) {
     const formatter = new Intl.NumberFormat('es-CL', {
         style: 'currency',
         currency: 'CLP'
@@ -49,18 +75,17 @@ function updateTable() {
     bills.forEach(({ countId, idSpent, spent }, index) => {
         // crear fila
         const row = document.createElement("tr");
-        //agregar col id
-        const idCell = document.createElement("td");
-        idCell.textContent = countId;
-        row.appendChild(idCell);
+
         //agregar nombre gasto
         const expenseCell = document.createElement("td");
+        expenseCell.className = "negrita";
         expenseCell.textContent = idSpent;
         row.appendChild(expenseCell);
         //agregar monto gasto
         const amountCell = document.createElement("td");
         spent = chileanPesoFormat(spent);
         amountCell.textContent = spent;
+        amountCell.className = "negrita alignRight";
         row.appendChild(amountCell);
         //agregar icono de editar
         const editCell = document.createElement("td");
@@ -91,17 +116,33 @@ function updateTable() {
 }
 
 
+
 //actualizar saldo
 function updateBudget() {
-    balanceHTML.textContent = "dfsdf";
+    let saldoFinal = saldo - gastos;
+
+    if (saldoFinal >= 0) {
+        balanceHTML.textContent = chileanPesoFormat(saldoFinal);
+    } else {
+        if (saldo === 0) {
+            showAlert("Por favor, ingresa tu presupuesto :(");
+        }
+        else {
+            showAlert("El presupuesto ingresado es menor que el total de los gastos. :(");
+        }
+        balanceHTML.textContent = chileanPesoFormat(saldoFinal);
+    }
 }
+
 
 //total gastos
 function updateSpends() {
     let totalSpent = bills.reduce((accumulator, currentValue) => {
         return accumulator + parseInt(currentValue.spent);
-      }, 0);
-      totalSpent = chileanPesoFormat(totalSpent);
+    }, 0);
+    gastos = totalSpent;
+    updateBudget();
+    totalSpent = chileanPesoFormat(totalSpent);
     spendsHTML.textContent = totalSpent;
 }
 

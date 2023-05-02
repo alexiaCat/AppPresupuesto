@@ -1,26 +1,60 @@
- /* Oculta el nav en la parte izquierda */
- .nav {
-    transform: translateX(100vw);
-  }
+ body {
+    background-color: #D5FCC5;
+ }
 
-  /* Muestra el nav */
-  .nav--show {
-     transform: translateX(0); 
-  }
+ .bgBlue {
+    background-color: #9FB9FF;
+ }
 
-.bgBlue {
-   background-color: #9FB9FF;
-}
-
-.bgGreen {
+ .bgGreen {
    background-color: #A7EF9E;
-}
+ }
 
-.bgRed {
+ .bgRed {
    background-color: #FFBABA;
+ }
+
+ .bgWhite {
+   background-color: white;
+ }
+
+
+ #expenseList td {
+   border: 1.5px solid blue;
+   padding: 5px;
+ }
+
+ .negrita {
+    font-weight: bold !important;
+ }
+
+ .alignRight {
+    text-align: right;
+ }
+
+
+ @media (max-width: 768px) {
+    .wMax {
+      width: 92% !important;
+    }
+ }
+
+ @media (max-width: 768px) {
+    .column {
+      flex-direction: column;
+    }
+ }
+
+ @media (max-width: 768px) {
+    .marg {
+      margin-top: 10px !important;
+      margin-bottom: 10px !important;
+    }
+ }
+
+ @media (max-width: 768px) {
+   .footerStatic {
+     position: static !important;
+   }
 }
 
-#expenseList td {
-   border: 1px solid black;
-   padding: 5px;
-}
