@@ -4,7 +4,7 @@ El objetivo de esta app es ayudar a tus usuarios a administrar sus finanzas, de 
 
 ## Comenzando 🚀
 
--Aplicación web para calcular presupuestos utilizando componentes de bootstrap_
+_Aplicación web para calcular presupuestos utilizando componentes de bootstrap_
 
 ```
 
